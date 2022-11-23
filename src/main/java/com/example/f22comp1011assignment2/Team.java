@@ -90,4 +90,10 @@ public class Team
     public void setTies(int ties) {
         this.ties = ties;
     }
+
+    public String toString()
+    {
+        return name;
+    }
+
 }

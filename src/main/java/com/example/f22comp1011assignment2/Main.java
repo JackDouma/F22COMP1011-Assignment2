@@ -19,7 +19,9 @@ public class Main extends Application
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException
+    {
+        System.out.println(APIUtility.getTeamsFromAzure());
         launch();
     }
 }

@@ -9,6 +9,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class APIUtility
 {
@@ -18,26 +20,27 @@ public class APIUtility
      * @throws IOException
      * @throws InterruptedException
      */
-    public static APIResponse getTeamsFromAzure() throws IOException, InterruptedException
+    public static Team[] getTeamsFromAzure() throws IOException, InterruptedException
     {
-        String uri = "temp";
+        // connection string
+        String uri = "https://sportpal.azurewebsites.net/api/Standings";
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();
 
-        HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<Path> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofFile(Paths.get("jsonData.json")));
 
         Gson gson = new Gson();
-        return gson.fromJson(response.body(), APIResponse.class);
+        return getTeamsFromJson();
     }
 
     /**
      * This method reads the json file
      * @return
      */
-    public static APIResponse getTeamsFromJson()
+    public static Team[] getTeamsFromJson()
     {
         Gson gson = new Gson();
-        APIResponse apiResponse = null;
+        Team[] apiResponse = null;
 
         try
         (
@@ -45,7 +48,7 @@ public class APIUtility
             JsonReader jsonReader = new JsonReader(fileReader);
         )
         {
-            apiResponse = gson.fromJson(jsonReader, APIResponse.class);
+            apiResponse = gson.fromJson(jsonReader, Team[].class);
         }
         catch(Exception e)
         {
