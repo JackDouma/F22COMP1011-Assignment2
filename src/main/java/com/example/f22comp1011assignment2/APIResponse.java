@@ -1,4 +1,8 @@
 package com.example.f22comp1011assignment2;
 
-public class APIResponse {
+import com.google.gson.annotations.SerializedName;
+
+public class APIResponse
+{
+
 }
