@@ -43,10 +43,10 @@ public class APIUtility
         Team[] apiResponse = null;
 
         try
-        (
-            FileReader fileReader = new FileReader("jsonData.json");
-            JsonReader jsonReader = new JsonReader(fileReader);
-        )
+                (
+                        FileReader fileReader = new FileReader("jsonData.json");
+                        JsonReader jsonReader = new JsonReader(fileReader);
+                )
         {
             apiResponse = gson.fromJson(jsonReader, Team[].class);
         }
@@ -56,5 +56,24 @@ public class APIUtility
         }
 
         return apiResponse;
+    }
+
+    /**
+     * returns info of a single team using id provided
+     * @param id
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public static Team getTeamInfo(int id) throws IOException, InterruptedException {
+        String uri = "https://sportpal.azurewebsites.net/api/Standings/" + id;
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();
+        HttpResponse<String> response = client.send(httpRequest,
+                HttpResponse.BodyHandlers.ofString());
+
+        Gson gson = new Gson();
+        return gson.fromJson(response.body(), Team.class);
     }
 }

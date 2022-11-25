@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Team
 {
+    @SerializedName("StandingId")
     private int standingsId;
 
     @SerializedName("Team")

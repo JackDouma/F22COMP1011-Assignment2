@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.f22comp1011assignment2.StandingsController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.f22comp1011assignment2.StandingsController">
+   <children>
+      <BorderPane layoutX="83.0" layoutY="49.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label styleClass="title" stylesheets="@styles.css" text="Standings" BorderPane.alignment="CENTER" />
+         </top>
+         <right>
+            <VBox prefHeight="583.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="viewTeamButton" mnemonicParsing="false" text="View Team">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Button>
+                  <ComboBox fx:id="changeLeagueComboBox" prefHeight="25.0" prefWidth="144.0" promptText="Change League" styleClass="button" />
+               </children>
+               <padding>
+                  <Insets left="25.0" top="50.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </right>
+         <left>
+            <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>
