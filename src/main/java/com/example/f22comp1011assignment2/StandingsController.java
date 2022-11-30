@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class StandingsController implements Initializable
@@ -36,7 +37,6 @@ public class StandingsController implements Initializable
         try
         {
             Team[] teams = APIUtility.getTeamsFromAzure();
-
             listView.getItems().addAll(teams);
         }
         catch (IOException e)
