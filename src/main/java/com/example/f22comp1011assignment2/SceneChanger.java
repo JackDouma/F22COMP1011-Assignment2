@@ -35,7 +35,7 @@ public class SceneChanger
     }
 
     /**
-     * change scenes to standings view
+     * change scene to standings view
      * @param event
      * @param fxmlFile
      * @throws IOException

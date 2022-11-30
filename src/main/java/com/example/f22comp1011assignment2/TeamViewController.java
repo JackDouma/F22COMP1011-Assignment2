@@ -68,6 +68,12 @@ public class TeamViewController
         }
     }
 
+    /**
+     * returns to standings view on button press
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @FXML
     private void getStandings(ActionEvent event) throws IOException, InterruptedException
     {

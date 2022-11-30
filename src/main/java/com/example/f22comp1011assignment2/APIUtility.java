@@ -60,7 +60,7 @@ public class APIUtility
     }
 
     /**
-     * returns info of a single team using id provided
+     * returns info of a single team using id provided. Used for team view
      * @param standingId
      * @return
      * @throws IOException
