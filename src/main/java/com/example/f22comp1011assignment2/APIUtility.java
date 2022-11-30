@@ -34,13 +34,13 @@ public class APIUtility
     }
 
     /**
-     * This method reads the json file
+     * This method reads the json file, and returns it as a teams array
      * @return
      */
     public static Team[] getTeamsFromJson()
     {
         Gson gson = new Gson();
-        Team[] apiResponse = null;
+        Team[] teams = null;
 
         try
                 (
@@ -48,14 +48,14 @@ public class APIUtility
                         JsonReader jsonReader = new JsonReader(fileReader);
                 )
         {
-            apiResponse = gson.fromJson(jsonReader, Team[].class);
+            teams = gson.fromJson(jsonReader, Team[].class);
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
 
-        return apiResponse;
+        return teams;
     }
 
     /**

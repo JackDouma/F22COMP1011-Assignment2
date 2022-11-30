@@ -1,55 +1,50 @@
 package com.example.f22comp1011assignment2;
 
-import com.google.gson.annotations.SerializedName;
 
 public class Team
 {
-    @SerializedName("StandingId")
-    private int standingsId;
+    private int standingId;
 
-    @SerializedName("Team")
-    private String name;
+    private String team;
 
-    @SerializedName("Coach")
     private String coach;
 
-    @SerializedName("Points")
     private int points;
 
-    @SerializedName("Wins")
     private int wins;
 
-    @SerializedName("Losses")
     private int losses;
 
-    @SerializedName("Ties")
     private int ties;
 
-    public Team(int standingsId, String name, String coach, int points, int wins, int losses, int ties)
+    private int leagueId;
+
+    public Team(int standingId, String team, String coach, int points, int wins, int losses, int ties, int leagueId)
     {
-        setStandingsId(standingsId);
-        setName(name);
+        setStandingId(standingId);
+        setTeam(team);
         setCoach(coach);
         setPoints(points);
         setWins(wins);
         setLosses(losses);
         setTies(ties);
+        setLeagueId(leagueId);
     }
 
-    public int getStandingsId() {
-        return standingsId;
+    public int getStandingId() {
+        return standingId;
     }
 
-    public void setStandingsId(int standingsId) {
-        this.standingsId = standingsId;
+    public void setStandingId(int standingId) {
+        this.standingId = standingId;
     }
 
-    public String getName() {
-        return name;
+    public String getTeam() {
+        return team;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTeam(String team) {
+        this.team = team;
     }
 
     public String getCoach() {
@@ -92,9 +87,17 @@ public class Team
         this.ties = ties;
     }
 
+    public int getLeagueId() {
+        return leagueId;
+    }
+
+    public void setLeagueId(int leagueId) {
+        this.leagueId = leagueId;
+    }
+
     public String toString()
     {
-        return name;
+        return team;
     }
 
 }
