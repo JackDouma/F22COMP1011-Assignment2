@@ -1,5 +1,6 @@
 package com.example.f22comp1011assignment2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -26,7 +27,12 @@ public class StandingsController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        try {
+        // make visibility of view team button false until team is selected
+        viewTeamButton.setVisible(false);
+
+        // populate listview
+        try
+        {
             Team[] teams = APIUtility.getTeamsFromAzure();
 
             listView.getItems().addAll(teams);
@@ -39,6 +45,37 @@ public class StandingsController implements Initializable
         {
             e.printStackTrace();
         }
+
+        // populate league -> will make it automated if I have time
+        changeLeagueComboBox.getItems().addAll("Varsity Football 2022", "Super Curlers International", "Ice Slicing Super League");
+
+        // listener for the list view. When team is selected, this code will run
+        listView.getSelectionModel().selectedItemProperty().addListener((obs, old, selectedTeam)->{
+            // if team is selected
+            if (selectedTeam != null)
+            {
+                // make visibility of view team button true
+                viewTeamButton.setVisible(true);
+            }
+            else
+            {
+                // make visibility of view team button false
+                viewTeamButton.setVisible(false);
+            }
+        });
+    }
+
+    /**
+     * when view team button is pressed, change scenes
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    @FXML
+    private void getTeamDetails(ActionEvent event) throws IOException, InterruptedException
+    {
+        Team team = listView.getSelectionModel().getSelectedItem();
+        SceneChanger.changeScenes(event,"team-view.fxml",team.getStandingId());
     }
 }
 

@@ -65,8 +65,8 @@ public class APIUtility
      * @throws IOException
      * @throws InterruptedException
      */
-    public static Team getTeamInfo(int id) throws IOException, InterruptedException {
-        String uri = "https://sportpal.azurewebsites.net/api/Standings/" + id;
+    public static Team getTeamDetails(int standingId) throws IOException, InterruptedException {
+        String uri = "https://sportpal.azurewebsites.net/api/Standings/" + standingId;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();

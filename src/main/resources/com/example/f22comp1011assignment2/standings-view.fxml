@@ -18,11 +18,11 @@
          <right>
             <VBox prefHeight="583.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="viewTeamButton" mnemonicParsing="false" text="View Team">
+                  <ComboBox fx:id="changeLeagueComboBox" prefHeight="25.0" prefWidth="144.0" promptText="Change League" styleClass="button" />
+                  <Button fx:id="viewTeamButton" mnemonicParsing="false" onAction="#getTeamDetails" text="View Team">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin></Button>
-                  <ComboBox fx:id="changeLeagueComboBox" prefHeight="25.0" prefWidth="144.0" promptText="Change League" styleClass="button" />
                </children>
                <padding>
                   <Insets left="25.0" top="50.0" />
