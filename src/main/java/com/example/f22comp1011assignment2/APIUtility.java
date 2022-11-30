@@ -33,6 +33,7 @@ public class APIUtility
         return getTeamsFromJson();
     }
 
+
     /**
      * This method reads the json file, and returns it as a teams array
      * @return
@@ -60,7 +61,7 @@ public class APIUtility
 
     /**
      * returns info of a single team using id provided
-     * @param id
+     * @param standingId
      * @return
      * @throws IOException
      * @throws InterruptedException

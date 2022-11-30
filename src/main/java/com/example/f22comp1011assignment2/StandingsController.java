@@ -47,7 +47,7 @@ public class StandingsController implements Initializable
         }
 
         // populate league -> will make it automated if I have time
-        changeLeagueComboBox.getItems().addAll("Varsity Football 2022", "Super Curlers International", "Ice Slicing Super League");
+        changeLeagueComboBox.getItems().addAll("All Leagues", "Varsity Football 2022", "Super Curlers International", "Ice Slicing Super League");
 
         // listener for the list view. When team is selected, this code will run
         listView.getSelectionModel().selectedItemProperty().addListener((obs, old, selectedTeam)->{
@@ -61,6 +61,62 @@ public class StandingsController implements Initializable
             {
                 // make visibility of view team button false
                 viewTeamButton.setVisible(false);
+            }
+        });
+
+        // listener for combo box
+        changeLeagueComboBox.getSelectionModel().selectedItemProperty().addListener((obs,old,league)->{
+            // clear listview
+            listView.getItems().clear();
+            int selectedLeague = 0;
+
+            // get selected league value depending on what user selected
+            if (league.equals("Varsity Football 2022"))
+            {
+                selectedLeague = 1;
+            }
+            else if (league.equals("Super Curlers International"))
+            {
+                selectedLeague = 2;
+            }
+            else if (league.equals("Ice Slicing Super League"))
+            {
+                selectedLeague = 3;
+            }
+            else
+            {
+                selectedLeague = 0;
+            }
+
+            // populate listview
+            try
+            {
+                Team[] teams = APIUtility.getTeamsFromAzure();
+
+                // if specific league is selected
+                if (selectedLeague != 0)
+                {
+                    for (Team team : teams)
+                    {
+                        if (team.getLeagueId() == selectedLeague)
+                        {
+                            listView.getItems().add(team);
+                        }
+                    }
+                }
+                // if user selects all leagues
+                else
+                {
+                    listView.getItems().addAll(teams);
+                }
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
             }
         });
     }

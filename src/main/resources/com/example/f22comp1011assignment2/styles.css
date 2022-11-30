@@ -11,7 +11,13 @@
     -fx-background-color: linear-gradient(from 250px 250px to 750px 750px,#bce9f7,#62b7d1);
 }
 
-.button {
+.button
+{
     -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
     -fx-background-radius: 20px;
+}
+
+.gridPaneText
+{
+    -fx-font-size: 12pt;
 }

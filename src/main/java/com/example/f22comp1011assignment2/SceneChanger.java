@@ -25,7 +25,7 @@ public class SceneChanger
 
         // get controller
         TeamViewController controller = fxmlLoader.getController();
-        APIUtility.getTeamDetails(standingId);
+        controller.getTeamDetails(standingId);
 
         // get stage
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
